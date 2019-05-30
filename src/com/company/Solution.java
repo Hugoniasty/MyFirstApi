@@ -1,13 +1,15 @@
 package com.company;
 
+import java.sql.Date;
+
 public class Solution {
 
     private int id;
-    private String created;
-    private String updated;
+    private Date created;
+    private Date updated;
     private String description;
 
-    public Solution (int id, String created, String updated, String description) {
+    public Solution (int id, Date created, Date updated, String description) {
         this.id = id;
         this.created = created;
         this.updated = updated;
@@ -22,19 +24,19 @@ public class Solution {
         this.id = id;
     }
 
-    public String getCreated () {
+    public Date getCreated () {
         return created;
     }
 
-    public void setCreated (String created) {
+    public void setCreated (Date created) {
         this.created = created;
     }
 
-    public String getUpdated () {
+    public Date getUpdated () {
         return updated;
     }
 
-    public void setUpdated (String updated) {
+    public void setUpdated (Date updated) {
         this.updated = updated;
     }
 

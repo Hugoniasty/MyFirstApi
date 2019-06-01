@@ -6,25 +6,18 @@ public class User {
     private String userName;
     private String email;
     private String password;
-    private int group_id;
 
     public User (String userName, String email, String password) {
         this.userName = userName;
         this.email = email;
         this.password = hashPassword (password);
     }
+    public User () {
+    }
 
 
     public String hashPassword(String password) {
         return BCrypt.hashpw(password, BCrypt.gensalt());
-    }
-
-    public int getGroup_id () {
-        return group_id;
-    }
-
-    public void setGroup_id (int group_id) {
-        this.group_id = group_id;
     }
 
     public int getId () {

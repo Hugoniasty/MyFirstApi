@@ -10,8 +10,6 @@ public class DbUtil {
 
 
     public static Connection getConnection () throws SQLException {
-
-        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        return conn;
+        return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }

@@ -12,8 +12,8 @@ public class SolutionDao {
 
         try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(CREATE_SOLUTION_QUERY, Statement.RETURN_GENERATED_KEYS);
-            statement.setDate(1, solution.getCreated());
-            statement.setDate(2, solution.getUpdated());
+            statement.setTimestamp(1, Timestamp.valueOf(solution.getCreated()));
+            statement.setTimestamp(2, Timestamp.valueOf(solution.getUpdated()));
             statement.setString(3, solution.getDescription());
             statement.executeUpdate();
             ResultSet result = statement.getGeneratedKeys();

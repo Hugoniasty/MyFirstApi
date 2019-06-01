@@ -106,12 +106,12 @@ CREATE TABLE `users` (
   `username` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(60) DEFAULT NULL,
-  `group_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   KEY `group_id` (`group_id`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `user_group` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Hugo','Hugo@hugo.pl','$2a$10$eB.TgQOj36T7bSHsKPQaL.ulj3S4gISMFGvFOnVNIaHQNJSf9T.4y',1),(2,'2Hugo','2Hugo@hugo.pl','$2a$10$AcK4/ETjriFyh9Pi0mIDsu9zMQ9AVJT9SG7TJ6VVQ5LzWV42RfRpG',1);
+INSERT INTO `users` VALUES (1,'Hugo','Hugo@hugo.pl','$2a$10$eB.TgQOj36T7bSHsKPQaL.ulj3S4gISMFGvFOnVNIaHQNJSf9T.4y',1),(2,'2Hugo','2Hugo@hugo.pl','$2a$10$AcK4/ETjriFyh9Pi0mIDsu9zMQ9AVJT9SG7TJ6VVQ5LzWV42RfRpG',1),(6,'3Hugo','3Hugo@hugo.pl','$2a$10$b1FOeklINHww2jtNGanmeuHD0c4qIGwMkio/jbYBVjXdx5v.YcjLe',1),(9,'4Hugo','5Hugo@hugo.pl','$2a$10$rnU0e9438fXeJjjDiQpQVuMVck3LmnqjaSW4jPYikkYC9HG9VQZW.',1),(10,'5Hugo','6Hugo@hugo.pl','$2a$10$rmb6lt//OZdG5GUHdhW4euGJ9OFTnRgFEn4/8ytfbiCI2x4yRR68i',1),(11,'99','99@911.pl','$2a$10$.OMY6iqLIdurARAj54RX5eBs44ihC0cOBfHQBm0WiPTa4vtbv7pfO',1),(12,'99','99@9.pl','$2a$10$KOh9yAhIVeEMAWiE/g.aD.8BRw4drkVz6Ge8UlgOm6NOaAqcjwpY6',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -133,4 +133,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-26 16:55:07
+-- Dump completed on 2019-06-01 23:12:46

@@ -12,14 +12,14 @@ public class Main {
         System.out.println(user.getId());
 */
 
-
+//     _______________________________
         //read user from database
 /*        UserDao userDao = new UserDao();
-        User user2 = userDao.read(12);
-        System.out.println(user2.getId());
-        System.out.println(user2.getUserName());
-        System.out.println(user2.getEmail());
-        System.out.println(user2.getPassword());
+        User userReadTest = userDao.read(12);
+        System.out.println(userReadTest.getId());
+        System.out.println(userReadTest.getUserName());
+        System.out.println(userReadTest.getEmail());
+        System.out.println(userReadTest.getPassword());
 
         System.out.println("________");
 
@@ -28,6 +28,16 @@ public class Main {
         } else if (userDao.read(12)!=null) {
             System.out.println("not null");
         }
+*/
+
+//      _______________________________
+        //update user in database
+/*        UserDao userDao = new UserDao();
+        User userUpdaterTest = userDao.read(11);
+        userUpdaterTest.setUserName("99");
+        userUpdaterTest.setEmail("99@911.pl");
+        userUpdaterTest.setPassword(userUpdaterTest.hashPassword("99"));
+        userDao.update(userUpdaterTest);
 */
     }
 }

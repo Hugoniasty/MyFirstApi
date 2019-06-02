@@ -1,6 +1,7 @@
 package com.company;
 
 import java.sql.*;
+import java.util.Arrays;
 
 public class UserDao {
 
@@ -73,6 +74,47 @@ public class UserDao {
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void delete (int userId) {
+
+        try (Connection conn = DbUtil.getConnection()) {
+            PreparedStatement statement =
+                    conn.prepareStatement(DELETE_USER_QUERY);
+            statement.setInt(1, userId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    private User[] addToArray(User u, User[] users) {
+        User [] tmpUsers = Arrays.copyOf(users, users.length+1);
+        tmpUsers[users.length] = u;
+        return tmpUsers;
+    }
+
+    public User[] findAll () {
+
+        try (Connection conn = DbUtil.getConnection()) {
+            User[] users = new User[0];
+            PreparedStatement statement = conn.prepareStatement(FIND_ALL_USERS_QUERY);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                User user = new User();
+                user.setId(resultSet.getInt(1));
+                user.setUserName(resultSet.getString("username"));
+                user.setEmail(resultSet.getString(3));
+                user.setPassword(resultSet.getString("password"));
+                users = addToArray(user, users);
+            }
+            return users;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

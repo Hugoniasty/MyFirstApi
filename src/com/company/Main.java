@@ -1,7 +1,9 @@
 package com.company;
 
+import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Arrays;
 
 public class Main {
     public static void main (String[] args) {
@@ -39,5 +41,41 @@ public class Main {
         userUpdaterTest.setPassword(userUpdaterTest.hashPassword("99"));
         userDao.update(userUpdaterTest);
 */
+
+//      _______________________________
+        //delete user from database
+/*        UserDao userDao = new UserDao();
+        User userDeleteTest = userDao.read(12);
+        if (userDeleteTest != null) {
+            System.out.println(" not null");
+        } else {
+            System.out.println("null");
+        }
+
+        userDao.delete(12);
+
+        User userDeleteTestAfter = userDao.read(12);
+        if (userDeleteTestAfter != null) {
+            System.out.println("not null");
+        } else {
+            System.out.println("null");
+        }
+*/
+
+//     ________________________________
+        //find all users from dtb
+/*        UserDao userDao = new UserDao();
+
+        User [] array = userDao.findAll();
+        System.out.println(Arrays.toString(array) + "  testttt");;
+
+        System.out.println(array[0]);
+
+        System.out.println(array[0].getId());
+        System.out.println(array[1].getPassword());
+        System.out.println(array[2].getUserName());
+        System.out.println(array[3].getEmail());
+*/
+
     }
 }

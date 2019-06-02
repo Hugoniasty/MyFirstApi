@@ -17,6 +17,9 @@ public class Solution {
         this.description = description;
     }
 
+    public Solution () {
+    }
+
     public int getId () {
         return id;
     }

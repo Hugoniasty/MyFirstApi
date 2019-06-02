@@ -1,13 +1,17 @@
-package com.company;
+package daos;
+
+import com.company.DbUtil;
+import com.company.User;
+import com.company.UserGroup;
 
 import java.sql.*;
 import java.util.Arrays;
 
-public class UserDao {
+public class UserGroupDao {
 
+    private static final String CREATE_USER_GROUP_QUERY =
+            "INSERT INTO user_group(name) VALUES (?)";
 
-    private static final String CREATE_USER_QUERY =
-            "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
 
     private static final String READ_USER_QUERY =
             "SELECT * FROM users WHERE id = ?";
@@ -21,20 +25,18 @@ public class UserDao {
     private static final String FIND_ALL_USERS_QUERY =
             "SELECT * FROM users";
 
-    public User create (User user) {
+
+    public UserGroup create (UserGroup userGroup) {
 
         try (Connection conn = DbUtil.getConnection()) {
-            PreparedStatement statement =
-                    conn.prepareStatement(CREATE_USER_QUERY, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, user.getUserName());
-            statement.setString(2, user.getEmail());
-            statement.setString(3, user.getPassword());
+            PreparedStatement statement = conn.prepareStatement(CREATE_USER_GROUP_QUERY, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, userGroup.getName());
             statement.executeUpdate();
-            ResultSet resultSet = statement.getGeneratedKeys();
-            if (resultSet.next()) {
-                user.setId(resultSet.getInt(1));
+            ResultSet result = statement.getGeneratedKeys();
+            if (result.next()) {
+                userGroup.setId(result.getInt(1));
             }
-            return user;
+            return userGroup;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -116,5 +118,16 @@ public class UserDao {
             e.printStackTrace();
             return null;
         }
+
+
     }
-}
+
+/* Tworzenie DAO
+1.Podajemy query do wykonania CRUD (create, read, update, delete + find all)
+2.Tworzymy metodę klasy wyżej niż dao (dla UserGroupDao będzie to UserGroup.
+  Jako argumenty przyjmujemy obiekt klasy wyżej.
+3.Robimy try'a łączącego nasz nowy obiekt z baza danych.
+    3.1 Connection "nazwa połączenia" . DbUtil.getConnection (coby nie pisać w każdym DAOsie
+        wszystkich danych łączących to wywołujemy metode z klasy "łączącej".
+    3.2 
+ */

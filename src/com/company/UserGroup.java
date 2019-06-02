@@ -10,6 +10,9 @@ public class UserGroup {
         this.name = name;
     }
 
+    public UserGroup () {
+    }
+
     public int getId () {
         return id;
     }

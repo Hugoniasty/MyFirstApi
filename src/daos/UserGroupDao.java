@@ -92,9 +92,8 @@ public class UserGroupDao {
     }
 
 
-
-    private User[] addToArray(User u, User[] users) {
-        User [] tmpUsers = Arrays.copyOf(users, users.length+1);
+    private User[] addToArray (User u, User[] users) {
+        User[] tmpUsers = Arrays.copyOf(users, users.length + 1);
         tmpUsers[users.length] = u;
         return tmpUsers;
     }
@@ -121,6 +120,7 @@ public class UserGroupDao {
 
 
     }
+}
 
 /* Tworzenie DAO
 1.Podajemy query do wykonania CRUD (create, read, update, delete + find all)

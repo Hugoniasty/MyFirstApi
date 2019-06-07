@@ -107,7 +107,7 @@ public class ExerciseDao {
                 Exercise exercise = new Exercise();
                 exercise.setId(resultSet.getInt(1));
                 exercise.setDescription(resultSet.getString("description"));
-                exercise.setTitle(resultSet.getString(3));
+                exercise.setTitle(resultSet.getString("title"));
                 exercises = addToArray(exercise, exercises);
             }
             return exercises;

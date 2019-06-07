@@ -10,8 +10,7 @@ public class Solution {
     private LocalDateTime updated;
     private String description;
 
-    public Solution (int id, LocalDateTime created, LocalDateTime updated, String description) {
-        this.id = id;
+    public Solution (LocalDateTime created, LocalDateTime updated, String description) {
         this.created = created;
         this.updated = updated;
         this.description = description;

@@ -74,7 +74,7 @@ public class SolutionDao {
                     conn.prepareStatement(UPDATE_SOLUTION_QUERY);
             statement.setString(1, solution.getDescription());
             statement.setString(2, solution.getCreated().toString());
-            
+
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,7 +99,7 @@ public class SolutionDao {
         tmpSolution[solutions.length] = u;
         return tmpSolution;
     }
-
+/*
     public Solution[] findAll () {
 
         try (Connection conn = DbUtil.getConnection()) {
@@ -119,5 +119,5 @@ public class SolutionDao {
             e.printStackTrace();
             return null;
         }
-    }
+    } */
 }

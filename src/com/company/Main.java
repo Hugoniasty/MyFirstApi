@@ -1,5 +1,6 @@
 package com.company;
 
+import daos.ExerciseDao;
 import daos.UserDao;
 
 import java.sql.Array;
@@ -9,55 +10,54 @@ import java.util.Arrays;
 
 public class Main {
     public static void main (String[] args) {
-        //new user to database
-/*      User user = new User ("9Hugo", "9Hugo@hugo.pl", "Hugo");
-        UserDao userDao = new UserDao();
-        userDao.create(user);
-        System.out.println(user.getId());
+
+        //create 'type' to database
+/*        Exercise exercise = new Exercise ("Exercise", "Exercise description contains description of the exercise");
+        ExerciseDao exerciseDao = new ExerciseDao();
+        exerciseDao.create(exercise);
+        System.out.println(exercise.getId());
 */
 
 //     _______________________________
-        //read user from database
-/*        UserDao userDao = new UserDao();
-        User userReadTest = userDao.read(12);
-        System.out.println(userReadTest.getId());
-        System.out.println(userReadTest.getUserName());
-        System.out.println(userReadTest.getEmail());
-        System.out.println(userReadTest.getPassword());
+        //read from database
+/*        ExerciseDao exerciseDao = new ExerciseDao();
+        Exercise exerciseReadTest = exerciseDao.read(1);
+        System.out.println(exerciseReadTest.getId());
+        System.out.println(exerciseReadTest.getDescription());
+        System.out.println(exerciseReadTest.getTitle());
 
         System.out.println("________");
 
-        if (userDao.read(12)==null) {
-            System.out.println("null");
-        } else if (userDao.read(12)!=null) {
+        if (exerciseDao.read(1)==null) {
+    exerciseDao        System.out.println("null");
+        } else if (exerciseDao.read(1)!=null) {
             System.out.println("not null");
         }
 */
 
 //      _______________________________
-        //update user in database
-/*        UserDao userDao = new UserDao();
-        User userUpdaterTest = userDao.read(11);
-        userUpdaterTest.setUserName("99");
-        userUpdaterTest.setEmail("99@911.pl");
-        userUpdaterTest.setPassword(userUpdaterTest.hashPassword("99"));
-        userDao.update(userUpdaterTest);
+        //update in database
+/*        ExerciseDao exerciseDao = new ExerciseDao();
+        Exercise exerciseUpdater = exerciseDao.read(1);
+        exerciseUpdater.setTitle("99");
+        exerciseUpdater.setDescription("99@911.pl");
+        exerciseDao.update(exerciseUpdater);
 */
 
 //      _______________________________
-        //delete user from database
-/*        UserDao userDao = new UserDao();
-        User userDeleteTest = userDao.read(12);
-        if (userDeleteTest != null) {
+        //delete from database
+/*        ExerciseDao exerciseDao = new ExerciseDao();
+        Exercise exerciseDeleteTest = exerciseDao.read(1);
+        if (exerciseDeleteTest != null) {
             System.out.println(" not null");
         } else {
             System.out.println("null");
         }
 
-        userDao.delete(12);
+        exerciseDao.delete(1);
 
-        User userDeleteTestAfter = userDao.read(12);
-        if (userDeleteTestAfter != null) {
+        Exercise exerciseDeleteTestAfter = exerciseDao.read(1);
+        if (exerciseDeleteTestAfter != null) {
             System.out.println("not null");
         } else {
             System.out.println("null");
@@ -65,18 +65,17 @@ public class Main {
 */
 
 //     ________________________________
-        //find all users from dtb
-/*        UserDao userDao = new UserDao();
+        //find all from dtb
+/*        ExerciseDao exerciseDao = new ExerciseDao();
 
-        User [] array = userDao.findAll();
-        System.out.println(Arrays.toString(array) + "  testttt");;
+        Exercise [] array = exerciseDao.findAll();
+        System.out.println(Arrays.toString(array));
 
         System.out.println(array[0]);
 
         System.out.println(array[0].getId());
-        System.out.println(array[1].getPassword());
-        System.out.println(array[2].getUserName());
-        System.out.println(array[3].getEmail());
+        System.out.println(array[0].getTitle());
+        System.out.println(array[0].getDescription());
 */
 
     }

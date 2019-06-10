@@ -107,9 +107,7 @@ public class UserGroupDao {
             while (resultSet.next()) {
                 User user = new User();
                 user.setId(resultSet.getInt(1));
-                user.setUserName(resultSet.getString("username"));
-                user.setEmail(resultSet.getString(3));
-                user.setPassword(resultSet.getString("password"));
+                user.setUserName(resultSet.getString("name"));
                 users = addToArray(user, users);
             }
             return users;

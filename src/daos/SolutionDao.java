@@ -11,14 +11,14 @@ import java.util.Arrays;
 public class SolutionDao {
 
     private final static String CREATE_SOLUTION_QUERY =
-            "INSERT INTO solution(created, updated, description " +
+            "INSERT INTO solution(created, updated, description) " +
                     "VALUES (NOW(), NOW(), ?)";
 
     private static final String READ_SOLUTION_QUERY =
             "SELECT * FROM solution WHERE id = ?";
 
     private static final String UPDATE_SOLUTION_QUERY =
-            "UPDATE solution SET  updated = NOW(), description = ? where id = ?";
+            "UPDATE solution SET updated = NOW(), description = ? where id = ?";
 
     private static final String DELETE_SOLUTION_QUERY =
             "DELETE FROM solution WHERE id = ?";
@@ -31,9 +31,7 @@ public class SolutionDao {
 
         try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(CREATE_SOLUTION_QUERY, Statement.RETURN_GENERATED_KEYS);
-            statement.setTimestamp(1, Timestamp.valueOf(solution.getCreated()));
-            statement.setTimestamp(2, Timestamp.valueOf(solution.getUpdated()));
-            statement.setString(3, solution.getDescription());
+            statement.setString(1, solution.getDescription());
             statement.executeUpdate();
             ResultSet result = statement.getGeneratedKeys();
             if (result.next()) {
@@ -57,7 +55,7 @@ public class SolutionDao {
                 Solution solution = new Solution();
                 solution.setId(resultSet.getInt("id"));
                 solution.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
-                solution.setUpdated(resultSet.getTimestamp("email").toLocalDateTime());
+                solution.setUpdated(resultSet.getTimestamp("updated").toLocalDateTime());
                 solution.setDescription(resultSet.getString("description"));
                 return solution;
             }
@@ -73,8 +71,7 @@ public class SolutionDao {
             PreparedStatement statement =
                     conn.prepareStatement(UPDATE_SOLUTION_QUERY);
             statement.setString(1, solution.getDescription());
-            statement.setString(2, solution.getCreated().toString());
-
+            statement.setInt(2, solution.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,7 +96,7 @@ public class SolutionDao {
         tmpSolution[solutions.length] = u;
         return tmpSolution;
     }
-/*
+
     public Solution[] findAll () {
 
         try (Connection conn = DbUtil.getConnection()) {
@@ -109,9 +106,9 @@ public class SolutionDao {
             while (resultSet.next()) {
                 Solution solution = new Solution();
                 solution.setId(resultSet.getInt(1));
-                solution.setUserName(resultSet.getString("username"));
-                solution.setEmail(resultSet.getString(3));
-                solution.setPassword(resultSet.getString("password"));
+                solution.setDescription(resultSet.getString("description"));
+                solution.setUpdated(resultSet.getTimestamp("updated").toLocalDateTime());
+                solution.setCreated(resultSet.getObject("created", LocalDateTime.class));
                 solutions = addToArray(solution, solutions);
             }
             return solutions;
@@ -119,5 +116,5 @@ public class SolutionDao {
             e.printStackTrace();
             return null;
         }
-    } */
+    }
 }

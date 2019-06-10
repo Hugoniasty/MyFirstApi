@@ -1,18 +1,15 @@
 package com.company;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 public class Solution {
 
     private int id;
-    private LocalDateTime created;
-    private LocalDateTime updated;
+    private LocalDateTime created = LocalDateTime.now();
+    private LocalDateTime updated = LocalDateTime.now();
     private String description;
 
-    public Solution (LocalDateTime created, LocalDateTime updated, String description) {
-        this.created = created;
-        this.updated = updated;
+    public Solution (String description) {
         this.description = description;
     }
 

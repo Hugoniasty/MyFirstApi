@@ -1,63 +1,64 @@
 package com.company;
 
 import daos.ExerciseDao;
-import daos.UserDao;
+import daos.SolutionDao;
 
-import java.sql.Array;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.TimeZone;
 
 public class Main {
     public static void main (String[] args) {
 
         //create 'type' to database
-/*        Exercise exercise = new Exercise ("Exercise", "Exercise description contains description of the exercise");
-        ExerciseDao exerciseDao = new ExerciseDao();
-        exerciseDao.create(exercise);
-        System.out.println(exercise.getId());
+     /*   Solution solution = new Solution ("3223Description of solution");
+        SolutionDao solutionDao = new SolutionDao();
+        solutionDao.create(solution);
+        System.out.println(solution.getId());
 */
 
 //     _______________________________
         //read from database
-/*        ExerciseDao exerciseDao = new ExerciseDao();
-        Exercise exerciseReadTest = exerciseDao.read(1);
-        System.out.println(exerciseReadTest.getId());
-        System.out.println(exerciseReadTest.getDescription());
-        System.out.println(exerciseReadTest.getTitle());
+       /* SolutionDao solutionDao= new SolutionDao();
+        Solution solutionReadTest = solutionDao.read(1);
+        System.out.println(solutionReadTest.getId());
+        System.out.println(solutionReadTest.getDescription());
+        System.out.println(solutionReadTest.getUpdated());
+        System.out.println(solutionReadTest.getCreated());
 
         System.out.println("________");
 
-        if (exerciseDao.read(1)==null) {
-    exerciseDao        System.out.println("null");
-        } else if (exerciseDao.read(1)!=null) {
+        if (solutionDao.read(1) == null) {
+            System.out.println("null");
+        } else if (solutionDao.read(1) != null) {
             System.out.println("not null");
-        }
-*/
+        }*/
+
 
 //      _______________________________
         //update in database
-/*        ExerciseDao exerciseDao = new ExerciseDao();
-        Exercise exerciseUpdater = exerciseDao.read(1);
-        exerciseUpdater.setTitle("99");
-        exerciseUpdater.setDescription("99@911.pl");
-        exerciseDao.update(exerciseUpdater);
+       /* SolutionDao solutionDao = new SolutionDao();
+        Solution solutionUpdater = solutionDao.read(1);
+        solutionUpdater.setDescription("Noga motyla");
+        solutionDao.update(solutionUpdater);
+
 */
 
 //      _______________________________
         //delete from database
-/*        ExerciseDao exerciseDao = new ExerciseDao();
-        Exercise exerciseDeleteTest = exerciseDao.read(1);
-        if (exerciseDeleteTest != null) {
+/*        SolutionDao solutionDao= new SolutionDao();
+        Solution solutionDeleteTest = solutionDao.read(3);
+        if (solutionDeleteTest != null) {
             System.out.println(" not null");
         } else {
             System.out.println("null");
         }
 
-        exerciseDao.delete(1);
+        solutionDao.delete(3);
 
-        Exercise exerciseDeleteTestAfter = exerciseDao.read(1);
-        if (exerciseDeleteTestAfter != null) {
+        Solution solutionDeleteTestAfter = solutionDao.read(3);
+        if (solutionDeleteTestAfter != null) {
             System.out.println("not null");
         } else {
             System.out.println("null");
@@ -66,17 +67,16 @@ public class Main {
 
 //     ________________________________
         //find all from dtb
-/*        ExerciseDao exerciseDao = new ExerciseDao();
+        SolutionDao solutionDao= new SolutionDao();
 
-        Exercise [] array = exerciseDao.findAll();
+        Solution [] array = solutionDao.findAll();
         System.out.println(Arrays.toString(array));
-
         System.out.println(array[0]);
 
-        System.out.println(array[0].getId());
-        System.out.println(array[0].getTitle());
-        System.out.println(array[0].getDescription());
-*/
+        System.out.println(array[1].getId());
+        System.out.println(array[1].getUpdated() + " updated");
+        System.out.println(array[1].getDescription());
+        System.out.println(array[1].getCreated() + " created");
 
     }
 }

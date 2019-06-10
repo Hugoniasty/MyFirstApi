@@ -12,18 +12,17 @@ public class UserGroupDao {
     private static final String CREATE_USER_GROUP_QUERY =
             "INSERT INTO user_group(name) VALUES (?)";
 
+    private static final String READ_USER_GROUP_QUERY =
+            "SELECT * FROM user_group WHERE id = ?";
 
-    private static final String READ_USER_QUERY =
-            "SELECT * FROM users WHERE id = ?";
+    private static final String UPDATE_USER_GROUP_QUERY =
+            "UPDATE user_group SET name = ? where id = ?";
 
-    private static final String UPDATE_USER_QUERY =
-            "UPDATE users SET username = ?, email = ?, password = ? where id = ?";
+    private static final String DELETE_USER_GROUP_QUERY =
+            "DELETE FROM user_group WHERE id = ?";
 
-    private static final String DELETE_USER_QUERY =
-            "DELETE FROM users WHERE id = ?";
-
-    private static final String FIND_ALL_USERS_QUERY =
-            "SELECT * FROM users";
+    private static final String FIND_ALL_USER_GROUPS_QUERY =
+            "SELECT * FROM user_group";
 
 
     public UserGroup create (UserGroup userGroup) {
@@ -43,27 +42,27 @@ public class UserGroupDao {
         }
     }
 
-    public User read (int userId) {
+
+    public UserGroup read (int userGroupId) {
 
         try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement statement =
-                    conn.prepareStatement(READ_USER_QUERY, Statement.RETURN_GENERATED_KEYS);
-            statement.setInt(1, userId);
+                    conn.prepareStatement(READ_USER_GROUP_QUERY, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, userGroupId);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                User user = new User();
-                user.setId(resultSet.getInt("id"));
-                user.setUserName(resultSet.getString("username"));
-                user.setEmail(resultSet.getString("email"));
-                user.setPassword(resultSet.getString("password"));
-                return user;
+                UserGroup userGroup = new UserGroup();
+                userGroup.setId(resultSet.getInt("id")); //Pobieramy ID z bazy DO obiektu
+                userGroup.setName(resultSet.getString("name")); //J.w lecz name
+                return userGroup;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-
+}
+/*
     public void update (User user) {
 
         try (Connection conn = DbUtil.getConnection()) {

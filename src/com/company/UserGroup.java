@@ -5,8 +5,7 @@ public class UserGroup {
     private int id;
     private String name;
 
-    public UserGroup (int id, String name) {
-        this.id = id;
+    public UserGroup (String name) {
         this.name = name;
     }
 

@@ -61,29 +61,15 @@ public class UserGroupDao {
         }
         return null;
     }
-}
-/*
-    public void update (User user) {
+
+
+    public void update (UserGroup userGroup) {
 
         try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement statement =
-                    conn.prepareStatement(UPDATE_USER_QUERY);
-            statement.setString(1, user.getUserName());
-            statement.setString(2, user.getEmail());
-            statement.setString(3, user.getPassword());
-            statement.setInt(4, user.getId());
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void delete (int userId) {
-
-        try (Connection conn = DbUtil.getConnection()) {
-            PreparedStatement statement =
-                    conn.prepareStatement(DELETE_USER_QUERY);
-            statement.setInt(1, userId);
+                    conn.prepareStatement(UPDATE_USER_GROUP_QUERY);
+            statement.setString(1, userGroup.getName());
+            statement.setInt(2, userGroup.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -91,33 +77,46 @@ public class UserGroupDao {
     }
 
 
-    private User[] addToArray (User u, User[] users) {
-        User[] tmpUsers = Arrays.copyOf(users, users.length + 1);
-        tmpUsers[users.length] = u;
-        return tmpUsers;
-    }
-
-    public User[] findAll () {
+    public void delete (int userGroupId) {
 
         try (Connection conn = DbUtil.getConnection()) {
-            User[] users = new User[0];
-            PreparedStatement statement = conn.prepareStatement(FIND_ALL_USERS_QUERY);
+            PreparedStatement statement =
+                    conn.prepareStatement(DELETE_USER_GROUP_QUERY);
+            statement.setInt(1, userGroupId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    private UserGroup[] addToArray (UserGroup u, UserGroup[] userGroups) {
+        UserGroup[] tmpUserGroups = Arrays.copyOf(userGroups, userGroups.length + 1);
+        tmpUserGroups[userGroups.length] = u;
+        return tmpUserGroups;
+    }
+
+    public UserGroup[] findAll () {
+
+        try (Connection conn = DbUtil.getConnection()) {
+            UserGroup[] userGroups = new UserGroup[0];
+            PreparedStatement statement = conn.prepareStatement(FIND_ALL_USER_GROUPS_QUERY);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                User user = new User();
-                user.setId(resultSet.getInt(1));
-                user.setUserName(resultSet.getString("name"));
-                users = addToArray(user, users);
+                UserGroup userGroup = new UserGroup();
+                userGroup.setId(resultSet.getInt(1)); //Wsadzanie danych do obiektu
+                userGroup.setName(resultSet.getString("name")); //Wsadzanie danych do obiektu
+                userGroups = addToArray(userGroup, userGroups); //Dodawanie obiektu i tablicy do metody kopiowania tablic
             }
-            return users;
+            return userGroups;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
-
-
     }
 }
+
 
 /* Tworzenie DAO
 1.Podajemy query do wykonania CRUD (create, read, update, delete + find all)

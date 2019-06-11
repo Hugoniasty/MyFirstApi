@@ -21,7 +21,7 @@ public class Main {
 
 //     _______________________________
         //read from database
-        UserGroupDao userGroupDao = new UserGroupDao();
+    /*    UserGroupDao userGroupDao = new UserGroupDao();
         UserGroup userGroupReadTest = userGroupDao.read(2); //UsGrpDAO ma metodę read, którą przypisujemy do obiektu UserGroup
         System.out.println(userGroupReadTest.getId()); //wypisujemy ID'ka grupy
         System.out.println(userGroupReadTest.getName()); //Wypisujemy name'a grupy
@@ -32,31 +32,31 @@ public class Main {
         } else if (userGroupDao.read(4) != null) {
             System.out.println("not null");
         }
-
+    */
 
 //      _______________________________
         //update in database
-       /* SolutionDao solutionDao = new SolutionDao();
-        Solution solutionUpdater = solutionDao.read(1);
-        solutionUpdater.setDescription("Noga motyla");
-        solutionDao.update(solutionUpdater);
-
+/*        UserGroupDao userGroupDao = new UserGroupDao();
+        UserGroup userGroupUpdater = userGroupDao.read(1);
+        userGroupUpdater.setName("Mlodociani przestepcy Asterixa");
+        userGroupDao.update(userGroupUpdater);
 */
+
 
 //      _______________________________
         //delete from database
-/*        SolutionDao solutionDao= new SolutionDao();
-        Solution solutionDeleteTest = solutionDao.read(3);
-        if (solutionDeleteTest != null) {
+  /*      UserGroupDao userGroupDao = new UserGroupDao();
+        UserGroup userGroupDeleteTest = userGroupDao.read(3);
+        if (userGroupDeleteTest != null) {
             System.out.println(" not null");
         } else {
             System.out.println("null");
         }
 
-        solutionDao.delete(3);
+        userGroupDao.delete(3);
 
-        Solution solutionDeleteTestAfter = solutionDao.read(3);
-        if (solutionDeleteTestAfter != null) {
+        UserGroup userGroupDeleteTestAfter = userGroupDao.read(3);
+        if (userGroupDeleteTestAfter != null) {
             System.out.println("not null");
         } else {
             System.out.println("null");
@@ -65,16 +65,13 @@ public class Main {
 
 //     ________________________________
         //find all from dtb
-   /*     SolutionDao solutionDao= new SolutionDao();
+        UserGroupDao userGroupDao= new UserGroupDao();
 
-        Solution [] array = solutionDao.findAll();
+        UserGroup [] array = userGroupDao.findAll();
         System.out.println(Arrays.toString(array));
-        System.out.println(array[0]);
 
-        System.out.println(array[1].getId());
-        System.out.println(array[1].getUpdated() + " updated");
-        System.out.println(array[1].getDescription());
-        System.out.println(array[1].getCreated() + " created");
-*/
+        System.out.println("\n" + array[0]);
+        System.out.println(array[0].getId());
+        System.out.println(array[0].getName() + "NAME");
     }
 }
